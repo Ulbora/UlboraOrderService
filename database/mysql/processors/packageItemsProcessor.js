@@ -40,53 +40,6 @@ exports.addPackageItems = function (con, json, callback) {
 };
 
 
-
-
-exports.getBarCode = function (id, clientId, callback) {
-    var queryId = [id, clientId];
-    crud.get(packageItemsQueries.BAR_CODE_GET_BY_ID_QUERY, queryId, function (result) {
-        if (result.success && result.data.length > 0) {
-            var rtn = {
-                id: result.data[0].id,
-                type: result.data[0].type,
-                code: result.data[0].code,
-                productDetailsId: result.data[0].product_details_id,
-                clientId: result.data[0].client_id
-            };
-            callback(rtn);
-        } else {
-            callback(null);
-        }
-    });
-};
-
-
-exports.getBarCodeListByDetails = function (json, callback) {
-    var queryId = [
-        json.productDetailsId,
-        json.clientId
-    ];
-    crud.get(packageItemsQueries.BAR_CODE_LIST_BY_DETAILS_QUERY, queryId, function (result) {
-        var rtnList = [];
-        if (result.success && result.data.length > 0) {            
-            for (var cnt = 0; cnt < result.data.length; cnt++) {
-                var rtn = {
-                    id: result.data[cnt].id,
-                    type: result.data[cnt].type,
-                    code: result.data[cnt].code,
-                    productDetailsId: result.data[cnt].product_details_id,
-                    clientId: result.data[cnt].client_id
-                };
-                rtnList.push(rtn);
-            }
-            callback(rtnList);
-        } else {
-            callback(rtnList);
-        }
-    });
-};
-
-
 exports.deletePackageItems = function (con, orderItemId, packageId, callback) {
     var queryId = [orderItemId, packageId];
     crud.delete(con, packageItemsQueries.PACKAGE_DELETE_QUERY, queryId, callback);
