@@ -55,10 +55,10 @@ module.exports = function (grunt) {
                 //src: ['tests/database/mysql/dbOrderItemsTest.js']
                 //src: ['tests/database/mysql/processors/orderItemProcessorTest.js']
                 //src: ['tests/database/mysql/crud/mysqlCrudTest.js']
-                src: ['tests/managers/packageManagerTest.js']
+                //src: ['tests/managers/packageManagerTest.js']
                // src: ['tests/managers/customerManagerTest.js']
                 //src: ['tests/delegates/credentialsGrantDelegateTest.js']
-                //src: ['tests/services/optionsServiceTest.js']
+                src: ['tests/services/orderServiceTest.js']
                 //src: ['tests/oauth2/oauth2Test.js']
                 //src: ['tests/proxies/tokenValidationProxyTest.js']
             }
