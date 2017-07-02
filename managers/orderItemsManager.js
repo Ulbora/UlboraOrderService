@@ -86,53 +86,15 @@ exports.updateOrderItem = function (json, callback) {
 
 
 
-exports.getOrder = function (id, clientId, callback) {
-    var idOk = manager.securityCheck(id);
-    var clientIdOk = manager.securityCheck(clientId);
-    if (idOk && clientIdOk) {
-        db.getOrder(id, clientId, function (result) {
-            if (result) {
-                callback(result);
-            } else {
-                callback({});
-            }
-        });
-    } else {
-        callback({});
-    }
-};
-
-exports.getOrderListByClient = function (clientId, callback) {
-    var clientIdOk = manager.securityCheck(clientId);
-    if (clientIdOk) {
-        db.getOrderListByClient(clientId, callback);
-    } else {
-        callback([]);
-    }
-
-};
-
-
-exports.getOrderListByCustomer = function (clientId, customerId, callback) {
-    var clientIdOk = manager.securityCheck(clientId);
-    var customerIdIdOk = manager.securityCheck(customerId);
-    if (clientIdOk && customerIdIdOk) {
-        db.getOrderListByCustomer(clientId, customerId, callback);
-    } else {
-        callback([]);
-    }
-};
-
-
-exports.deleteOrder = function (orderId, clientId, callback) {
+exports.deleteOrderItem = function (id, clientId, callback) {
     var returnVal = {
         success: false,
         message: ""
     };
-    var orderIdOk = manager.securityCheck(orderId);
+    var idOk = manager.securityCheck(id);
     var clientIdOk = manager.securityCheck(clientId);
-    if (orderIdOk && clientIdOk) {
-        db.deleteOrder(orderId, clientId, function (result) {
+    if (idOk && clientIdOk) {
+        db.deleteOrderItem(id, clientId, function (result) {
             if (result && result.success) {
                 returnVal.success = result.success;
                 callback(returnVal);

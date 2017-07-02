@@ -97,7 +97,7 @@ describe('OrderItemProcessor', function () {
                 status: "ordered",
                 orderType: "online",
                 comment: "",
-                orderId: orderItemId,
+                id: orderItemId,
                 clientId: clientId
             };
             setTimeout(function () {
