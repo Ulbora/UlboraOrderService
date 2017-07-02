@@ -40,96 +40,55 @@ exports.connect = function (host, user, pw, database, cpnum) {
 };
 
 
-exports.addBarCode = function (json, callback) {
-    db.addBarCode(json, callback);
+exports.addOrder = function (json, callback) {
+    db.addOrder(json, callback);
+};
+
+exports.getOrder = function (id, clientId, callback) {
+    db.getOrder(id, clientId, callback);
 };
 
 
-exports.updateBarCode = function (json, callback) {
-    db.updateBarCode(json, callback);
+exports.getOrderListByClient = function (clientId, callback) {
+    db.getOrderListByClient(clientId, callback);
 };
 
-exports.getBarCode = function (id, clientId, callback) {
-    db.getBarCode(id, clientId, callback);
-};
-
-exports.getBarCodeListByDetails = function (json, callback) {
-    db.getBarCodeListByDetails(json, callback);
-};
-
-exports.deleteBarCode = function (id, clientId, callback) {
-    db.deleteBarCode(id, clientId, callback);
+exports.getOrderListByCustomer = function (clientId, customerId, callback) {
+    db.getOrderListByCustomer(clientId, customerId, callback);
 };
 
 
-
-exports.getDetailByBarCode = function (json, callback) {
-    db.getDetailByBarCode(json, callback);
+exports.updateOrder = function (json, callback) {
+    db.updateOrder(json, callback);
 };
 
-exports.getDetailBySku = function (json, callback) {
-    db.getDetailBySku(json, callback);
+exports.deleteOrder = function (orderId, clientId, callback) {
+    db.deleteOrder(orderId, clientId, callback);
 };
 
-exports.addDetail = function (json, callback) {
-    db.addDetail(json, callback);
+exports.addOrderItem = function (json, callback) {
+    db.addOrderItem(json, callback);
 };
 
-exports.updateDetail = function (json, callback) {
-    db.updateDetail(json, callback);
+exports.updateOrderItem = function (json, callback) {
+    db.updateOrderItem(json, callback);
 };
 
-exports.getDetail = function (id, clientId, callback) {
-    db.getDetail(id, clientId, callback);
+exports.deleteOrderItem = function (id, clientId, callback) {
+    db.deleteOrderItem(id, clientId, callback);
 };
 
-exports.getDetailListByProduct = function (json, callback) {
-    db.getDetailListByProduct(json, callback);
+exports.addPackage = function (json, callback) {
+    db.addPackage(json, callback);
+};
+exports.updatePackage = function (json, callback) {
+    db.updatePackage(json, callback);
 };
 
-exports.deleteDetail = function (id, clientId, callback) {
-    db.deleteDetail(id, clientId, callback);
+exports.getPackageOrderDetails = function (json, callback) {
+    db.getPackageOrderDetails(json, callback);
 };
 
-
-exports.addOption = function (json, callback) {
-    db.addOption(json, callback);
+exports.deletePackage = function (id, clientId,  callback) {
+    db.deletePackage(id, clientId,  callback);
 };
-
-exports.updateOption = function (json, callback) {
-    db.updateOption(json, callback);
-};
-
-exports.getOption = function (id, clientId, callback) {
-    db.getOption(id, clientId, callback);
-};
-
-exports.getOptionListByDetails = function (json, callback) {
-    db.getOptionListByDetails(json, callback);
-};
-
-exports.searchByOptionName = function (json, callback) {
-    db.searchByOptionName(json, callback);
-};
-
-exports.deleteOption = function (id, clientId, callback) {
-    db.deleteOption(id, clientId, callback);
-};
-
-
-exports.addProduct = function (json, callback) {
-    db.addProduct(json, callback);
-};
-
-exports.updateProduct = function (json, callback) {
-    db.updateProduct(json, callback);
-};
-
-exports.getProduct = function (id, clientId, callback) {
-    db.getProduct(id, clientId, callback);
-};
-
-exports.deleteProduct = function (id, clientId, callback) {
-    db.deleteProduct(id, clientId, callback);
-};
-
