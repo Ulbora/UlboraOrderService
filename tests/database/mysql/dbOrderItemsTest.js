@@ -97,11 +97,11 @@ describe('mysql DB order items', function () {
                 cancelQty: 0,
                 returnedQty: 0,
                 backOrderedQty: 1,
-                retailPrice: 199.95,
+                retailPrice: 299.95,
                 status: "ordered",
                 orderType: "online",
                 comment: "",
-                orderId: orderItemId,
+                id: orderItemId,
                 clientId: clientId
             };
             setTimeout(function () {
@@ -154,7 +154,8 @@ describe('mysql DB order items', function () {
                 db.getOrder(orderId, clientId, function (result) {
                     console.log("order res: " + JSON.stringify(result));
                     if (result && result.orderItems && result.orderItems.length === 3 && 
-                            result.orderItems[2].sku === "0010021457") {                        
+                            result.orderItems[2].sku === "0010021457" && result.orderItems[0].retailPrice === 299.95 &&
+                            result.orderItems[1].retailPrice === 19.95) {                        
                         assert(true);
                     } else {
                         assert(false);
@@ -214,5 +215,6 @@ describe('mysql DB order items', function () {
             }, 1000);
         });
     });
+    
 });
 

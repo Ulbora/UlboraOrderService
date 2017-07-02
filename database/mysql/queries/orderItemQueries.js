@@ -24,7 +24,7 @@ exports.ORDER_ITEM_INSERT_QUERY = "INSERT INTO order_item Set ?";
 
 exports.ORDER_ITEM_UPDATE_QUERY = "UPDATE order_item SET ordered_qty = ?, cancel_qty  = ?, " + 
                                   "returned_qty = ?, back_ordered_qty = ?, retail_price = ?, " +
-                                  "status = ?, order_type = ?, comment = ?"
+                                  "status = ?, order_type = ?, comment = ?" +
                                   "WHERE id = ? and client_id = ? ";
                        
 exports.ORDER_ITEM_GET_BY_ID_QUERY = "SELECT * FROM order_item WHERE id = ? and client_id = ? ";

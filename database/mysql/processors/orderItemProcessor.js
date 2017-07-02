@@ -65,6 +65,7 @@ exports.updateOrderItem = function (con, json, callback) {
         json.id,
         json.clientId
     ];
+    console.log("args: " + args);
     crud.update(con, orderItemQueries.ORDER_ITEM_UPDATE_QUERY, args, callback);
 };
 

@@ -23,7 +23,7 @@
 exports.PACKAGE_INSERT_QUERY = "INSERT INTO package Set ?";
 
 exports.PACKAGE_UPDATE_QUERY = "UPDATE package SET shipped_date = ?, tracking = ?, " +  
-                               "shipping_address_id = ?, shipping_cost = ?, comment = ? "
+                               "shipping_address_id = ?, shipping_cost = ?, comment = ? " +
                                "WHERE id = ? and client_id = ? ";
                        
 exports.PACKAGE_GET_BY_ID_QUERY = "SELECT * FROM package WHERE id = ? and client_id = ? ";
