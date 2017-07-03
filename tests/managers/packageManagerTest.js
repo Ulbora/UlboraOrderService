@@ -2,6 +2,7 @@ var assert = require('assert');
 var db = require("../../database/db");
 var orderManager = require("../../managers/orderManager");
 var packageManager = require("../../managers/packageManager");
+var orderId;
 var item1;
 var item2;
 var item3;
