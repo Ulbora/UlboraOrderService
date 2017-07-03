@@ -19,31 +19,21 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-var HOST = "localhost";
-var PORT = 3006;
-
-//database
-var DATABASE_HOST = "localhost";
-var DATABASE_NAME = "ulbora_order_service";
-var DATABASE_USER_NAME = "admin";
-var DATABASE_USER_PASSWORD = "admin";
-var DATABASE_POOL_SIZE = 5;
-
-
-//cors allowed origins
-var ALLOWED_ORIGINS = "*";
-var CORS_ENABLED = false;
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+var conf = require('./configuration');
+var cors = require('./cors/cors');
+var restInitializer = require('./routeInitializers/restInitializer');
+var db = require("./database/db");
+db.connectDb(conf);
 
 
-exports.HOST = HOST;
-exports.PORT = PORT;
-exports.ALLOWED_ORIGINS = ALLOWED_ORIGINS;
-exports.CORS_ENABLED = CORS_ENABLED;
-
-//database
-exports.DATABASE_HOST = DATABASE_HOST;
-exports.DATABASE_USER_NAME = DATABASE_USER_NAME;
-exports.DATABASE_USER_PASSWORD = DATABASE_USER_PASSWORD;
-exports.DATABASE_NAME = DATABASE_NAME;
-exports.DATABASE_POOL_SIZE = DATABASE_POOL_SIZE;
-
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+restInitializer.init(app, db);   
+if (conf.CORS_ENABLED) {
+    app.use(cors.CORS);
+}
+app.listen(process.env.PORT || conf.PORT);

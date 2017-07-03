@@ -21,45 +21,35 @@
 
 
 
-var productService = require("../services/productService");
-var detailsService = require("../services/detailsService");
-var optionsService = require("../services/optionsService");
-var barCodeService = require("../services/barCodeService");
+var orderService = require("../services/orderService");
+var orderItemsService = require("../services/orderItemsService");
+var packageService = require("../services/packageService");
+
 
 exports.init = function(app, db){
     //init
-    productService.init(db);
-    detailsService.init(db);
-    optionsService.init(db);
-    barCodeService.init(db);
+    orderService.init(db);
+    orderItemsService.init(db);
+    packageService.init(db);    
     
-    // product validation
-    app.post('/rs/product/add', productService.add);
-    app.put('/rs/product/update', productService.update);
-    app.get('/rs/product/get/:id/:clientId', productService.get);    
-    app.delete('/rs/product/delete/:id/:clientId', productService.delete);
+    //order service
+    app.post('/rs/order/add', orderService.add);
+    app.put('/rs/order/update', orderService.update);
+    app.get('/rs/order/get/:id/:clientId', orderService.get);
+    app.get('/rs/order/list/:clientId', orderService.listByClient);    
+    app.get('/rs/order/customer/list/:customerId/:clientId', orderService.listByCustomer);    
+    app.delete('/rs/order/delete/:id/:clientId', orderService.delete);
     
-    //details services
-    app.post('/rs/details/add', detailsService.add);      
-    app.put('/rs/details/update', detailsService.update);
-    app.get('/rs/details/get/:id/:clientId', detailsService.get);
-    app.post('/rs/details/getByProduct', detailsService.getByProduct);  
-    app.post('/rs/details/getBySku', detailsService.getBySku);  
-    app.post('/rs/details/getByBarCode', detailsService.getByBarCode);  
-    app.delete('/rs/details/delete/:id/:clientId', detailsService.delete);
+    //order items services
+    app.post('/rs/order/item/add', orderItemsService.add);      
+    app.put('/rs/order/item/update', orderItemsService.update);    
+    app.delete('/rs/order/item/delete/:id/:clientId', orderItemsService.delete);
     
-    //options services
-    app.post('/rs/options/add', optionsService.add);      
-    app.put('/rs/options/update', optionsService.update);
-    app.get('/rs/options/get/:id/:clientId', optionsService.get);
-    app.post('/rs/options/getByDetails', optionsService.getByDetails);  
-    app.post('/rs/options/searchByOption', optionsService.searchByOption);      
-    app.delete('/rs/options/delete/:id/:clientId', optionsService.delete);
+    //package service
+    app.post('/rs/order/package/add', packageService.add);      
+    app.put('/rs/order/package/update', packageService.update);
+    app.post('/rs/order/package/get', packageService.get);      
+    app.delete('/rs/order/package/delete/:id/:clientId', packageService.delete);
     
-    //barcode services
-    app.post('/rs/barCode/add', barCodeService.add);      
-    app.put('/rs/barCode/update', barCodeService.update);
-    app.get('/rs/barCode/get/:id/:clientId', barCodeService.get);
-    app.post('/rs/barCode/getByDetails', barCodeService.getByDetails);        
-    app.delete('/rs/barCode/delete/:id/:clientId', barCodeService.delete);
+    
 };
