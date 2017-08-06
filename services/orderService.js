@@ -40,6 +40,7 @@ exports.add = function (req, res) {
         };
         oauth2.authorize(req, res, me, validationUrl, function () {
             var reqBody = req.body;
+            reqBody.clientId = req.header("clientId");
             var bodyJson = JSON.stringify(reqBody);
             console.log("body: " + bodyJson);
             orderManager.addOrder(reqBody, function (result) {
@@ -61,6 +62,7 @@ exports.update = function (req, res) {
         };
         oauth2.authorize(req, res, me, validationUrl, function () {
             var reqBody = req.body;
+            reqBody.clientId = req.header("clientId");
             var bodyJson = JSON.stringify(reqBody);
             console.log("body: " + bodyJson);
             orderManager.updateOrder(reqBody, function (result) {
@@ -84,7 +86,7 @@ exports.get = function (req, res) {
     };
     oauth2.authorize(req, res, me, validationUrl, function () {
         var id = req.params.id;
-        var clientId = req.params.clientId;
+        var clientId = req.header("clientId");
         if (id !== null && id !== undefined && clientId !== null && clientId !== undefined) {
             orderManager.getOrder(id, clientId, function (result) {
                 res.send(result);
@@ -104,7 +106,7 @@ exports.listByClient = function (req, res) {
         scope: "read"
     };
     oauth2.authorize(req, res, me, validationUrl, function () {
-        var clientId = req.params.clientId;
+        var clientId = req.header("clientId");
         if (clientId !== null && clientId !== undefined) {
             orderManager.getOrderListByClient(clientId, function (result) {
                 res.send(result);
@@ -124,7 +126,7 @@ exports.listByCustomer = function (req, res) {
         scope: "read"
     };
     oauth2.authorize(req, res, me, validationUrl, function () {
-        var clientId = req.params.clientId;
+        var clientId = req.header("clientId");
         var customerId = req.params.customerId;
         if (customerId !== null && customerId !== undefined && clientId !== null && clientId !== undefined) {
             orderManager.getOrderListByCustomer(clientId, customerId, function (result) {
@@ -145,7 +147,7 @@ exports.delete = function (req, res) {
     };
     oauth2.authorize(req, res, me, validationUrl, function () {
         var id = req.params.id;
-        var clientId = req.params.clientId;
+        var clientId = req.header("clientId");
         if (id !== null && id !== undefined && clientId !== null && clientId !== undefined) {
             orderManager.deleteOrder(id, clientId, function (result) {
                 res.send(result);

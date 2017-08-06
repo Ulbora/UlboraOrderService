@@ -140,6 +140,7 @@ exports.getPackageOrderDetails = function (json, callback) {
             var rtnList = [];
             for (var cnt = 0; cnt < result.data.length; cnt++) {
                 var rtn = {
+                    packageId: result.data[cnt].package_id,
                     shippedDate: result.data[cnt].shipped_date,
                     tracking: result.data[cnt].tracking,
                     shippingAddressId: result.data[cnt].shipping_address_id,

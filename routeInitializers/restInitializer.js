@@ -35,21 +35,21 @@ exports.init = function(app, db){
     //order service
     app.post('/rs/order/add', orderService.add);
     app.put('/rs/order/update', orderService.update);
-    app.get('/rs/order/get/:id/:clientId', orderService.get);
-    app.get('/rs/order/list/:clientId', orderService.listByClient);    
-    app.get('/rs/order/customer/list/:customerId/:clientId', orderService.listByCustomer);    
-    app.delete('/rs/order/delete/:id/:clientId', orderService.delete);
+    app.get('/rs/order/get/:id', orderService.get);
+    app.get('/rs/order/list', orderService.listByClient);    
+    app.get('/rs/order/customer/list/:customerId', orderService.listByCustomer);    
+    app.delete('/rs/order/delete/:id', orderService.delete);
     
     //order items services
     app.post('/rs/order/item/add', orderItemsService.add);      
     app.put('/rs/order/item/update', orderItemsService.update);    
-    app.delete('/rs/order/item/delete/:id/:clientId', orderItemsService.delete);
+    app.delete('/rs/order/item/delete/:id', orderItemsService.delete);
     
     //package service
     app.post('/rs/order/package/add', packageService.add);      
     app.put('/rs/order/package/update', packageService.update);
     app.post('/rs/order/package/get', packageService.get);      
-    app.delete('/rs/order/package/delete/:id/:clientId', packageService.delete);
+    app.delete('/rs/order/package/delete/:id', packageService.delete);
     
     
 };

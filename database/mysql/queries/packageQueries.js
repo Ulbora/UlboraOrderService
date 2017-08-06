@@ -38,7 +38,7 @@ exports.PACKAGE_COUNT_BY_ORDER_QUERY = "SELECT count(id) as packageCount FROM pa
                                        "WHERE order_id = ? " + 
                                        "and client_id = ? ";
                                        
-exports.PACKAGE_ORDER_DETAILS_GET_BY_BAR_CODE = "select p.shipped_date, p.tracking, p.shipping_address_id, " +
+exports.PACKAGE_ORDER_DETAILS_GET_BY_BAR_CODE = "select p.id as package_id, p.shipped_date, p.tracking, p.shipping_address_id, " +
                                                 "p.package_number, p.shipping_cost, p.comment as package_comments, " +
                                                 "oi.id as order_item_id, oi.product, oi.sku, oi.ordered_qty, " +
                                                 "oi.cancel_qty, oi.returned_qty, oi.back_ordered_qty, " +
